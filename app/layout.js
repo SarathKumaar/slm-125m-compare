@@ -1,9 +1,9 @@
 import './globals.css';
 
 export const metadata = {
-  title: 'SLM-125M · Legal/Financial Chat',
+  title: 'SLM-125M · Closed-book vs Grounded',
   description:
-    'A 125M-parameter small language model trained from scratch on US case law, SEC filings, and web text.',
+    'Compare two 125M-parameter models trained from scratch on US case law, SEC filings, and web text: a closed-book model vs a grounded / RAFT model.',
 };
 
 export default function RootLayout({ children }) {
