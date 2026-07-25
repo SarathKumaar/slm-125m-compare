@@ -4,18 +4,15 @@ export const runtime = 'nodejs';
 export const maxDuration = 60;
 
 export async function GET() {
-  const endpoint = process.env.MODAL_ENDPOINT;
-  if (!endpoint) {
-    return Response.json({ ok: false, error: 'not configured' }, { status: 500 });
-  }
-  try {
-    const res = await fetch(`${endpoint.replace(/\/$/, '')}/health`, {
-      method: 'GET',
-      cache: 'no-store',
-    });
-    const data = await res.json().catch(() => ({}));
-    return Response.json({ ok: res.ok, ...data });
-  } catch {
-    return Response.json({ ok: false, error: 'unreachable' }, { status: 502 });
-  }
+  const endpoints = [process.env.MODAL_ENDPOINT, process.env.MODAL_GEMMA_ENDPOINT].filter(
+    Boolean
+  );
+  // Fire /health at both model servers so their containers cold-start before the user asks.
+  const results = await Promise.allSettled(
+    endpoints.map((e) =>
+      fetch(`${e.replace(/\/$/, '')}/health`, { method: 'GET', cache: 'no-store' })
+    )
+  );
+  const ok = results.some((r) => r.status === 'fulfilled' && r.value.ok);
+  return Response.json({ ok, warmed: endpoints.length });
 }

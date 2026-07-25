@@ -1,9 +1,9 @@
 import './globals.css';
 
 export const metadata = {
-  title: 'SLM-125M · Closed-book vs Grounded',
+  title: '125M vs Gemma 2B · Closed-book vs Grounded',
   description:
-    'Compare two 125M-parameter models trained from scratch on US case law, SEC filings, and web text: a closed-book model vs a grounded / RAFT model.',
+    'Compare four fine-tunes across a from-scratch 125M model and Gemma 2B: closed-book vs grounded / RAFT, on legal + financial QA.',
 };
 
 export default function RootLayout({ children }) {

@@ -147,8 +147,24 @@ body {
 }
 
 /* ---- compare grid ---- */
+.rowlabel {
+  margin: 20px 0 0;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+  text-transform: uppercase;
+}
+
+.rowlabel.closed {
+  color: var(--accent);
+}
+
+.rowlabel.grounded {
+  color: var(--raft);
+}
+
 .grid {
-  margin-top: 18px;
+  margin-top: 10px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 14px;
@@ -167,14 +183,14 @@ body {
   padding: 14px 16px;
   display: flex;
   flex-direction: column;
-  min-height: 180px;
+  min-height: 150px;
 }
 
-.panel.raft {
+.panel.grounded {
   border-top: 2px solid var(--raft);
 }
 
-.panel.chat {
+.panel.closed {
   border-top: 2px solid var(--accent);
 }
 
@@ -264,9 +280,75 @@ body {
   }
 }
 
+/* ---- info section ---- */
+.infotitle {
+  margin: 30px 0 4px;
+  font-size: 18px;
+}
+
+.infonote {
+  margin: 0 0 14px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 12px;
+}
+
+@media (max-width: 860px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+.card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 13px 14px;
+}
+
+.cardhead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.cardname {
+  font-size: 13.5px;
+  font-weight: 700;
+}
+
+.card dl {
+  margin: 0;
+  display: grid;
+  grid-template-columns: auto;
+  gap: 7px;
+}
+
+.card dt {
+  color: var(--muted);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.card dd {
+  margin: 2px 0 0;
+  font-size: 12.5px;
+  line-height: 1.45;
+}
+
 .foot {
-  margin-top: 16px;
+  margin-top: 24px;
   color: var(--muted);
   font-size: 11.5px;
   text-align: center;
+  line-height: 1.5;
 }
